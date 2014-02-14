@@ -32,8 +32,8 @@
   [request]
   (let [session (:session request)]
      (if(:username session)
-      (web/private-render "home.html" {:sidebar (get-sidebar) :latestproject (db/retrieve-latest-project)})
-      (web/public-render "home.html" {:sidebar (get-sidebar) :latestproject (db/retrieve-latest-project)})
+      (web/private-render "home.html" {:sidebar (get-sidebar) :latestproject (db/retrieve-latest-projects)})
+      (web/public-render "home.html" {:sidebar (get-sidebar) :latestproject (db/retrieve-latest-projects)})
       )))
 
 (defn user
@@ -72,21 +72,21 @@
   (let [params (:params request)]
    (cond
     (empty? (:email params))
-      (web/public-render "home.html" {:sidebar (get-sidebar) :latestproject (db/retrieve-latest-project) :message "Email Not Valid"})
+      (web/public-render "home.html" {:sidebar (get-sidebar) :latestproject (db/retrieve-latest-projects) :message "Email Not Valid"})
     
     (empty? (:password params))
-        (web/public-render "home.html" {:sidebar (get-sidebar) :latestproject (db/retrieve-latest-project) :message "Password Not Valid"})  
+        (web/public-render "home.html" {:sidebar (get-sidebar) :latestproject (db/retrieve-latest-projects) :message "Password Not Valid"})  
         
         (db/get-user (:email params))
-        (web/public-render "home.html" {:sidebar (get-sidebar) :latestproject (db/retrieve-latest-project) :message "User Already Exists"})  
+        (web/public-render "home.html" {:sidebar (get-sidebar) :latestproject (db/retrieve-latest-projects) :message "User Already Exists"})  
         
         (not (re-matches email-regex (:email params)))
-        (web/public-render "home.html" {:sidebar (get-sidebar) :latestproject (db/retrieve-latest-project):message "Email not Valid"})  
+        (web/public-render "home.html" {:sidebar (get-sidebar) :latestproject (db/retrieve-latest-projects):message "Email not Valid"})  
         
         :default
         (do
         (register-user params)
-        (web/public-render "user.html" {:sidebar (get-sidebar) :latestproject (db/retrieve-latest-project) :message "Email has been sent to your account Please verify"})
+        (web/public-render "user.html" {:sidebar (get-sidebar) :latestproject (db/retrieve-latest-projects) :message "Email has been sent to your account Please verify"})
 
         ))))
 
@@ -154,11 +154,11 @@
 
 (defn about 
   [request]
-  (let [latestproject (db/retrieve-latest-project)
+  (let [latestproject (db/retrieve-latest-projects)
         session (:session request)]
     (if(:username session)
       (web/private-render "about.html" {:sidebar (get-sidebar)})
-      (web/public-render "about.html" {:sidebar (get-sidebar) :latestproject (db/retrieve-latest-project)})
+      (web/public-render "about.html" {:sidebar (get-sidebar) :latestproject (db/retrieve-latest-projects)})
       )))
 
 (defn contact 
@@ -167,7 +167,7 @@
         session (:session request)]
     (if(:username session)
       (web/private-render "contact.html" {:sidebar (get-sidebar)})
-      (web/public-render "contact.html" {:sidebar (get-sidebar) :latestproject (db/retrieve-latest-project)})
+      (web/public-render "contact.html" {:sidebar (get-sidebar) :latestproject (db/retrieve-latest-projects)})
       )))
 
 (defn submit-projectpage
@@ -198,7 +198,7 @@
 
 (defn render-forgotpassword-page 
   [request]
-        (web/public-render "forgot-password.html" {:sidebar (get-sidebar) :latestproject (db/retrieve-latest-project)}))
+        (web/public-render "forgot-password.html" {:sidebar (get-sidebar) :latestproject (db/retrieve-latest-projects)}))
 
 
 (defn forgotpassword 
@@ -233,5 +233,5 @@
         password-salt (:salt (first (db/get-user (:email params))))
         password (BCrypt/hashpw (:rpassword params) password-salt) ]
     (db/user-password-update (:email params) password)
-    (web/public-render "home.html" {:sidebar (get-sidebar) :latestproject (db/retrieve-latest-project) :message "Password Updated successfully"})
+    (web/public-render "home.html" {:sidebar (get-sidebar) :latestproject (db/retrieve-latest-projects) :message "Password Updated successfully"})
     ))

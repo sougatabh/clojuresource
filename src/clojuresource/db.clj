@@ -9,7 +9,7 @@
 
 (def mysql-db 
   {:datasource (dbcp/make-datasource :mysql {:host 'localhost :database 'clojuresource
-                         :user :root   :password 'root})})
+                         :user :root   :password 'secr3t})})
 
 (defn generated-key
   [k m]
@@ -120,10 +120,10 @@
                [(str "select id,name from Category")]
                 (doall rs))))
 
-(defn retrieve-latest-project
+(defn retrieve-latest-projects
   []
   (sql/with-connection mysql-db(sql/with-query-results rs 
-               [(str "select id,name,description,homepage from Project order by id DESC LIMIT 1")]
+               [(str "select id,name,description,homepage from Project order by id DESC LIMIT 10")]
                 (doall rs))))
 
 
