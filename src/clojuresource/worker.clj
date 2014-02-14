@@ -163,7 +163,7 @@
 
 (defn contact 
   [request]
-  (let [latestproject (db/retrieve-latest-project)
+  (let [latestproject (db/retrieve-latest-projects)
         session (:session request)]
     (if(:username session)
       (web/private-render "contact.html" {:sidebar (get-sidebar)})
