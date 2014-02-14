@@ -1,0 +1,126 @@
+
+<script type="text/javascript">
+        $(document).ready(function () {
+         	
+	         $('#submitproject').validate({
+	            rules: {
+	              name: {
+	                required: true
+	                
+	              },
+	            desc: {
+	              required: true
+	            },
+	            homepage: {
+	              required: true
+	            },
+	        },
+	        messages: {
+            	name: {
+            		required: "Project name not valid"
+            
+          		},
+          		desc: {
+            		required: "Description not valid"
+            
+          		},
+          		homepage: {
+            		required: "Home Page not valid"
+            
+          		}
+
+        	},
+	        
+	        highlight: function (element) {
+	            $(element).closest('.control-group').removeClass('success').addClass('error');
+	        },
+	        success: function (element) {
+	            element.text('OK!').addClass('valid')
+	                .closest('.control-group').removeClass('error').addClass('success');
+	        },
+	        
+	      
+	    	});
+
+	});
+    </script>
+    <div class="container-fluid">
+      <div class="row-fluid">
+          <div class="sidebar-nav span3">
+              <ul class="nav nav-tabs nav-stacked">
+                  <% (:sidebar pagedata)%>
+              </ul>
+          </div><!--/span-->
+        <div class="span9">
+          <div class="hero-unit">
+		   <form class="form-horizontal" id="submitproject" method='post' action='/submit-project'>
+				<fieldset>
+				
+				<legend>Submit a new Project</legend>
+				
+				<div class="control-group">
+				<label class="control-label">Project Name</label>
+				<div class="controls"> 
+					<input type="text" id="pname" class="input-xlarge" autocomplete="off" name="name" value="">
+				</div>
+				</div>
+				
+				
+				<div class="control-group">
+				<label class="control-label">Description</label>
+				<div class="controls">
+					
+					<textarea name="desc" id="pdesc" rows="3" autocomplete="off" cols="10"></textarea>
+				</div>
+				</div>
+				
+				<div class="control-group">
+				<label class="control-label">Home Page</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="homepage" autocomplete="off" autocomplete="off"name="homepage" value="">
+				</div>
+				</div>
+				
+				<div class="control-group">
+					<label class="control-label">License</label>
+					<div class="controls">
+						<select name="license">
+						<% (for-each [b (:licenses pagedata)] (str "<option value='"(:id b) "'>"(:name b)"</option>")) %>
+						</select>
+					</div>
+				</div>
+				
+				<div class="control-group">
+				<label class="control-label">Category</label>
+				<div class="controls">
+						<select name="category">
+							<% (for-each [b (:categories pagedata)] (str "<option value='"(:id b) "'>"(:name b)"</option>")) %>
+						</select>
+				</div>
+				</div>
+				
+				<div class="control-group">
+				<label class="control-label"></label>
+				<div class="controls">
+				<button type="submit" class="btn btn-success" >save</button>
+				<button type="submit" class="btn btn-inverse" >cancel</button>
+				</div>
+				</div>
+				
+				</fieldset>
+		</form>
+          </div>
+          </div><!--/row-->
+          </div><!--/span-->
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <p>&copy; Sougata Bhattacharya 2013</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+    
+  </body>
+</html>

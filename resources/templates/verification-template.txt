@@ -1,0 +1,12 @@
+Dear <% fullname %>,
+
+Successfully signed up at Clojuresource
+Please click the link below to complete registration:
+
+<% url %>
+
+If your browser does not display it as a clickable link, please copy and paste into the address bar of your browser.
+
+If you did not signup for this service, please ignore this message.
+
+clojuresource.net

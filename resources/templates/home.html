@@ -1,0 +1,40 @@
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="sidebar-nav span3">
+        <ul class="nav nav-tabs nav-stacked">
+			     <% (:sidebar pagedata)%>
+        </ul>
+        </div><!--/span-->
+        <div class="span8 col-lg-4">
+            <div class="panel panel-info">
+
+            <% (for-each [b (:latestproject pagedata)] 
+            
+            	(str "<div class=\"panel-heading project-heading\"><h3>"(:name b)"</h3></div>"
+               	 "<div class=project-content><div class=panel-body>"(:description b) "</div><a href=" (:homepage b) ">Go to "
+
+            	 (:name b)"</a></div></div>"
+              	)) %>
+            
+               </div>
+                    </div><!--/row-->
+          </div><!--/span-->
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+       <p>&copy; Sougata Bhattacharya 2013</p>
+      </footer>
+      
+      
+    
+   
+    </div><!--/.fluid-container-->
+      <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+  </body>
+</html>

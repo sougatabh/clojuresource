@@ -1,0 +1,94 @@
+ <div id="page_signin">
+                        <div class="page-header-top">
+                                <div class="container">
+                                	<div class="span6">
+                                        <h1>Sign in &amp; sign up </small></h1>
+                                        </div>
+                                </div>
+                        </div>
+                       <div class="container">
+                                <div class="content">
+                                        
+                                                <div class="span16">
+                                                <div class="row">
+                                                       <div class="columnA pull-left span5">
+                                                        		<div class="title">Sign In</div>
+                                                        		<form class="form-horizontal" action="/signin" id="login-form" method="post">
+															          <div class="control-group">
+															            <label class="control-label" for="inputEmail">Email</label>
+															            <div class="controls">
+															              <input type="text" name="email" id="inputEmail" autocomplete="off" placeholder="Email" class="input-txt">
+															            </div>
+															          </div>
+															          <div class="control-group">
+															            <label class="control-label" for="inputPassword">Password</label>
+															            <div class="controls">
+															              <input type="password" id="inputPassword" name="password"autocomplete="off" autocomplete="off"  placeholder="Password" class="input-txt">
+															            </div>
+															          </div>
+															          <div class="control-group">
+															            <div class="controls">
+															              <button type="submit" class="btn btn-primary">Sign in</button>
+															            </div>
+															            <div class="controls">
+															              <a href="/forgotpassword">Forgot Password?</a>
+															            </div>
+															          </div>
+															     </form>	
+                                                        </div>
+                                                 		 <div class="columnB pull-right span5">
+                                                 		 		<div class="title">Sign Up</div>
+                                                 		 		<form class="form-horizontal" action="/signup" id="signup-form" method="post">
+												          <div class="control-group">
+												            <label class="control-label" for="inputEmail">Full name</label>
+												            <div class="controls">
+												              <input type="text" name="fullname" id="inputEmail" autocomplete="off" placeholder="Full name" class="input-txt">
+												            </div>
+												          </div>
+												          <div class="control-group">
+												            <label class="control-label" for="inputEmail">Email</label>
+												            <div class="controls">
+												              <input type="text" name="email" id="inputEmail" autocomplete="off" placeholder="Email" class="input-txt">
+												            </div>
+												          </div>
+												          <div class="control-group">
+												            <label class="control-label" for="inputPassword">Password</label>
+												            <div class="controls">
+												              <input type="password" id="password" name="password" autocomplete="off" placeholder="Password" class="input-txt">
+												            </div>
+												          </div>
+												             <div class="control-group">
+												            <label class="control-label" for="inputPassword">Confirm Password</label>
+												            <div class="controls">
+												              <input type="password" id="confirmpassword" name="confirmpassword" autocomplete="off"  placeholder="Confirm Password" class="input-txt">
+												            </div>
+												          </div>
+												          <div class="control-group">
+												            <div class="controls">
+												              <button type="submit" class="btn  btn-success">Sign up</button>
+												            </div>
+												          </div>
+												        </form>
+                                                 		 </div>
+                                                 		 </div>
+                                                 </div>
+                                        
+                                </div>
+						</div>                       
+</div>
+<style>
+.title{
+	background: none repeat scroll 0 0 #CCCCCC;
+   /* margin: 0 22px 0 0;*/
+    padding: 10px 20px;
+    margin-bottom:10px;
+}
+.controls .input-txt{
+	padding: 10px 5px 10px 5px;
+	height: 35px;
+	width: 250px;
+}
+.columnA, .columnB{
+	height: 350px;
+}
+</style>
