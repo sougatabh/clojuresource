@@ -9,13 +9,11 @@
         <div class="span8 col-lg-4">
             <div class="panel panel-info">
 
-            <% (for-each [b (:latestproject pagedata)] 
+            <% (for-each [each-project (:latestproject pagedata)] 
             
-            	(str "<div class=\"panel-heading project-heading\"><h3>"(:name b)"</h3></div>"
-               	 "<div class=project-content><div class=panel-body>"(:description b) "</div><a href=" (:homepage b) ">Go to "
-
-            	 (:name b)"</a></div></div>"
-              	)) %>
+            	(str "<div class=\"panel panel-info\">" "<div class=\"panel-heading project-heading\"><h3>" (:name each-project) "</h3></div>" "<div class=project-content><div class=panel-body>"
+    (:description each-project)"</div>" "<a href=" (:homepage each-project) " >Go to "
+    (:name each-project)"</a>" "</div></div></div>"))%>
             
                </div>
                     </div><!--/row-->
