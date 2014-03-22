@@ -117,7 +117,7 @@
 (defn retrieve-categories
   []
   (sql/with-connection mysql-db(sql/with-query-results rs 
-               [(str "select id,name from Category")]
+               [(str "SELECT id, name FROM Category ORDER BY name")]
                 (doall rs))))
 
 (defn retrieve-latest-projects
